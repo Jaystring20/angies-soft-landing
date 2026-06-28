@@ -1,0 +1,23 @@
+{
+  "name": "angies-soft-landing",
+  "version": "1.0.0",
+  "description": "Premium Nigerian food brand website - Hard Day. Soft Landing.",
+  "main": "index.html",
+  "scripts": {
+    "dev": "http-server -p 8000 -c-1",
+    "start": "http-server -p 8000 -c-1",
+    "build": "echo 'Static site - no build needed'"
+  },
+  "keywords": [
+    "food",
+    "nigerian",
+    "premium",
+    "restaurant",
+    "landing-page"
+  ],
+  "author": "Angie's Soft Landing",
+  "license": "MIT",
+  "devDependencies": {
+    "http-server": "^14.1.1"
+  }
+}
