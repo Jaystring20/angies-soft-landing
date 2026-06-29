@@ -12,340 +12,52 @@
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
 
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         :root {
-            --cr: #F7F2E9;  /* Chiffon Cream */
-            --um: #7A4B2A;  /* Golden Umber */
-            --am: #C47B3B;  /* Warm Amber */
-            --on: #1A1614;  /* Midnight Onyx */
-            --gr: #7A6E63;  /* Warm Grey */
-            --cd: #EDE8DC;  /* Deeper Cream */
-            --li: #D4C9B4;  /* Linen */
-            --gn: #2E7D32;  /* Success Green */
+            --cr: #F7F2E9; --um: #7A4B2A; --am: #C47B3B;
+            --on: #1A1614; --gr: #7A6E63; --cd: #EDE8DC;
+            --li: #D4C9B4; --gn: #2E7D32;
         }
-
-        body {
-            font-family: 'DM Sans', sans-serif;
-            background: var(--cr);
-            color: var(--on);
-            line-height: 1.6;
-        }
-
-        .nav {
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 20px 24px;
-            background: var(--cr);
-            border-bottom: 1px solid var(--li);
-            backdrop-filter: blur(4px);
-        }
-
-        .nlogo {
-            font-family: 'Playfair Display', serif;
-            font-size: 18px;
-            font-weight: 700;
-            letter-spacing: 0.12em;
-            color: var(--on);
-        }
-
-        .nbtn {
-            background: var(--um);
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 999px;
-            font-size: 14px;
-            font-weight: 600;
-            cursor: pointer;
-            text-decoration: none;
-            transition: all 0.2s ease;
-        }
-
-        .nbtn:hover {
-            background: var(--am);
-            transform: translateY(-2px);
-        }
-
-        .hero {
-            display: flex;
-            flex-direction: column;
-            gap: 0;
-        }
-
-        .hv {
-            height: 260px;
-            background: var(--cd);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            overflow: hidden;
-            flex-shrink: 0;
-        }
-
-        .fci {
-            width: 190px;
-            height: 190px;
-            border-radius: 50%;
-            background-size: cover;
-            background-position: center;
-            background-color: var(--um);
-            box-shadow: 0 10px 36px rgba(26,22,20,.2), 0 0 0 5px rgba(122,75,42,.15);
-            transition: background-image .5s ease;
-        }
-
-        .badge {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            background: var(--um);
-            color: white;
-            padding: 6px 12px;
-            border-radius: 4px;
-            font-size: 11px;
-            font-weight: 700;
-            letter-spacing: 0.08em;
-            display: none;
-        }
-
-        .badge.show {
-            display: block;
-        }
-
-        .hc {
-            padding: 32px 24px;
-            background: white;
-            display: flex;
-            flex-direction: column;
-            gap: 16px;
-        }
-
-        .dcat {
-            font-size: 12px;
-            font-weight: 600;
-            letter-spacing: 0.1em;
-            color: var(--gr);
-            text-transform: uppercase;
-        }
-
-        .dnm {
-            font-family: 'Playfair Display', serif;
-            font-size: 32px;
-            font-weight: 700;
-            color: var(--on);
-            line-height: 1.2;
-        }
-
-        .dds {
-            font-size: 14px;
-            color: var(--gr);
-            line-height: 1.6;
-        }
-
-        .dftr {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            gap: 16px;
-        }
-
-        .dpr {
-            font-family: 'Playfair Display', serif;
-            font-size: 24px;
-            font-weight: 700;
-            color: var(--um);
-        }
-
-        .dwa {
-            background: var(--um);
-            color: white;
-            border: none;
-            padding: 12px 24px;
-            border-radius: 999px;
-            font-size: 13px;
-            font-weight: 600;
-            cursor: pointer;
-            text-decoration: none;
-            display: inline-block;
-            transition: all 0.2s ease;
-        }
-
-        .dwa:hover {
-            background: var(--am);
-        }
-
-        .ht {
-            height: 140px;
-            background: var(--cd);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .tt-wrap {
-            width: 100%;
-            perspective: 1000px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-        }
-
-        .tt-inner {
-            position: relative;
-            width: 240px;
-            height: 120px;
-        }
-
-        .tc-item {
-            position: absolute;
-            width: 80px;
-            height: 80px;
-            border-radius: 50%;
-            background-size: cover;
-            background-position: center;
-            background-color: var(--um);
-            cursor: pointer;
-            transition: all 0.4s cubic-bezier(.34,1.32,.64,1);
-            opacity: 0.6;
-        }
-
-        .dots {
-            position: absolute;
-            bottom: 12px;
-            left: 50%;
-            transform: translateX(-50%);
-            display: flex;
-            gap: 6px;
-        }
-
-        .dot {
-            width: 6px;
-            height: 6px;
-            border-radius: 50%;
-            background: var(--li);
-            cursor: pointer;
-            transition: all 0.2s ease;
-        }
-
-        .dot.active {
-            background: var(--um);
-            transform: scale(1.3);
-        }
-
-        .brand {
-            padding: 60px 24px;
-            text-align: center;
-            background: white;
-            border-top: 1px solid var(--li);
-        }
-
-        .bh {
-            font-family: 'Playfair Display', serif;
-            font-size: 28px;
-            font-weight: 400;
-            font-style: italic;
-            color: var(--on);
-            margin-bottom: 24px;
-            line-height: 1.4;
-        }
-
-        .bp {
-            font-size: 14px;
-            color: var(--gr);
-            max-width: 600px;
-            margin: 0 auto 24px;
-            line-height: 1.8;
-        }
-
-        .bc {
-            display: flex;
-            gap: 24px;
-            justify-content: center;
-            flex-wrap: wrap;
-            margin-top: 32px;
-        }
-
-        .blink {
-            display: flex;
-            flex-direction: column;
-            gap: 8px;
-            align-items: center;
-            text-decoration: none;
-            color: var(--um);
-            font-weight: 600;
-            transition: all 0.2s ease;
-        }
-
-        .blink:hover {
-            color: var(--am);
-        }
-
-        .bicon {
-            font-size: 24px;
-        }
-
+        body { font-family: 'DM Sans', sans-serif; background: var(--cr); color: var(--on); line-height: 1.6; }
+        .nav { position: sticky; top: 0; z-index: 100; display: flex; align-items: center; justify-content: space-between; padding: 20px 24px; background: var(--cr); border-bottom: 1px solid var(--li); }
+        .nlogo { font-family: 'Playfair Display', serif; font-size: 18px; font-weight: 700; letter-spacing: 0.12em; color: var(--on); }
+        .nbtn { background: var(--um); color: white; border: none; padding: 10px 20px; border-radius: 999px; font-size: 14px; font-weight: 600; cursor: pointer; text-decoration: none; display: inline-block; transition: all 0.2s ease; }
+        .nbtn:hover { background: var(--am); transform: translateY(-2px); }
+        .hero { display: flex; flex-direction: column; }
+        .hv { height: 260px; background: var(--cd); display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; }
+        .fci { width: 190px; height: 190px; border-radius: 50%; background-size: cover; background-position: center; box-shadow: 0 10px 36px rgba(26,22,20,.2); }
+        .badge { position: absolute; top: 20px; right: 20px; background: var(--um); color: white; padding: 6px 12px; border-radius: 4px; font-size: 11px; font-weight: 700; display: none; }
+        .badge.show { display: block; }
+        .hc { padding: 32px 24px; background: white; display: flex; flex-direction: column; gap: 16px; }
+        .dcat { font-size: 12px; font-weight: 600; letter-spacing: 0.1em; color: var(--gr); text-transform: uppercase; }
+        .dnm { font-family: 'Playfair Display', serif; font-size: 32px; font-weight: 700; color: var(--on); line-height: 1.2; }
+        .dds { font-size: 14px; color: var(--gr); line-height: 1.6; }
+        .dftr { display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+        .dpr { font-family: 'Playfair Display', serif; font-size: 24px; font-weight: 700; color: var(--um); }
+        .dwa { background: var(--um); color: white; border: none; padding: 12px 24px; border-radius: 999px; font-size: 13px; font-weight: 600; cursor: pointer; text-decoration: none; display: inline-block; transition: all 0.2s ease; }
+        .dwa:hover { background: var(--am); }
+        .ht { height: 140px; background: var(--cd); display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; }
+        .tt-wrap { width: 100%; perspective: 1000px; display: flex; align-items: center; justify-content: center; position: relative; }
+        .tt-inner { position: relative; width: 240px; height: 120px; }
+        .tc-item { position: absolute; width: 80px; height: 80px; border-radius: 50%; background-size: cover; background-position: center; cursor: pointer; transition: all 0.4s cubic-bezier(.34,1.32,.64,1); opacity: 0.6; }
+        .dots { position: absolute; bottom: 12px; left: 50%; transform: translateX(-50%); display: flex; gap: 6px; }
+        .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--li); cursor: pointer; transition: all 0.2s ease; }
+        .dot.active { background: var(--um); transform: scale(1.3); }
+        .brand { padding: 60px 24px; text-align: center; background: white; border-top: 1px solid var(--li); }
+        .bh { font-family: 'Playfair Display', serif; font-size: 28px; font-weight: 400; font-style: italic; color: var(--on); margin-bottom: 24px; line-height: 1.4; }
+        .bp { font-size: 14px; color: var(--gr); max-width: 600px; margin: 0 auto 24px; line-height: 1.8; }
+        .bc { display: flex; gap: 24px; justify-content: center; flex-wrap: wrap; margin-top: 32px; }
+        .blink { display: flex; flex-direction: column; gap: 8px; align-items: center; text-decoration: none; color: var(--um); font-weight: 600; transition: all 0.2s ease; }
+        .blink:hover { color: var(--am); }
         @media (min-width: 680px) {
-            .hero {
-                display: grid;
-                grid-template-columns: 52% 48%;
-                grid-template-rows: 1fr auto;
-            }
-
-            .hv {
-                grid-column: 2;
-                grid-row: 1 / 3;
-                height: auto;
-                min-height: 580px;
-            }
-
-            .fci {
-                width: 240px;
-                height: 240px;
-            }
-
-            .hc {
-                grid-column: 1;
-                grid-row: 1;
-                padding: 46px 42px 14px;
-            }
-
-            .ht {
-                grid-column: 1;
-                grid-row: 2;
-                height: 140px;
-            }
-
-            .dnm {
-                font-size: 48px;
-            }
-
-            .brand {
-                padding: 80px 60px;
-            }
-
-            .bh {
-                font-size: 36px;
-            }
-        }
-
-        @media (prefers-reduced-motion: reduce) {
-            * {
-                animation-duration: 0.01ms !important;
-                animation-iteration-count: 1 !important;
-                transition-duration: 0.01ms !important;
-            }
+            .hero { display: grid; grid-template-columns: 52% 48%; grid-template-rows: 1fr auto; }
+            .hv { grid-column: 2; grid-row: 1 / 3; height: auto; min-height: 580px; }
+            .fci { width: 240px; height: 240px; }
+            .hc { grid-column: 1; grid-row: 1; padding: 46px 42px 14px; }
+            .ht { grid-column: 1; grid-row: 2; }
+            .dnm { font-size: 48px; }
+            .brand { padding: 80px 60px; }
+            .bh { font-size: 36px; }
         }
     </style>
 </head>
@@ -382,23 +94,109 @@
         <p class="bp">Premium Nigerian comfort food, reimagined for the working professional. Every dish communicates one thing: the hard part of your day is over.</p>
         <div class="bc">
             <a href="https://wa.me/2349024142280" class="blink" target="_blank" rel="noopener noreferrer">
-                <span class="bicon">💬</span>
+                <span>💬</span>
                 <span>WhatsApp</span>
             </a>
             <a href="https://instagram.com/angies_soft_landing" class="blink" target="_blank" rel="noopener noreferrer">
-                <span class="bicon">📷</span>
+                <span>📷</span>
                 <span>Instagram</span>
             </a>
         </div>
     </section>
 
-    <script src="dish_imgs.js"></script>
+    <script src="images_array.js"></script>
     <script>
-        // Initialize the turntable when DOM is loaded
-        if (typeof initTurntable === 'function') {
-            document.addEventListener('DOMContentLoaded', initTurntable);
+        // All 11 dishes
+        const DISHES = [
+            {category:'FRIES & CHICKEN',name:'Quick Spark',desc:'Seasoned fries + spiced grilled chicken wings.',price:'₦4,500',wa:'https://wa.me/2349024142280?text=Hi%20Angie%2C%20I%20want%20The%20Quick%20Spark.',pop:false},
+            {category:'SMALL CHOPS',name:'Tarmac Spread',desc:'Assorted small chops — puff puff, samosa, spring rolls, meat pie.',price:'₦6,800',wa:'https://wa.me/2349024142280?text=Hi%20Angie%2C%20I%20want%20The%20Tarmac%20Spread.',pop:true},
+            {category:'SHAWARMA',name:'Transit Wrap',desc:'Chicken & beef shawarma with signature sauce and toasted wraps.',price:'₦3,200',wa:'https://wa.me/2349024142280?text=Hi%20Angie%2C%20I%20want%20The%20Transit%20Wrap.',pop:false},
+            {category:'GRILLED WRAPS',name:'Pressed Route',desc:'Grilled pressed wraps — toasted, packed with protein and fresh garnish.',price:'₦3,800',wa:'https://wa.me/2349024142280?text=Hi%20Angie%2C%20I%20want%20The%20Pressed%20Route.',pop:false},
+            {category:'FISH PEPPER SOUP',name:'Still Waters',desc:'Fish pepper soup with boiled plantain — clean, restorative, deeply spiced.',price:'₦5,500',wa:'https://wa.me/2349024142280?text=Hi%20Angie%2C%20I%20want%20Still%20Waters.',pop:false},
+            {category:'CHICKEN PEPPER SOUP',name:'The Debrief',desc:'Chicken pepper soup — the end-of-day ritual, warmth in every sip.',price:'₦5,000',wa:'https://wa.me/2349024142280?text=Hi%20Angie%2C%20I%20want%20The%20Debrief.',pop:false},
+            {category:'ASSORTED SOUP',name:'Off Manifest',desc:'Assorted offal pepper soup — for those who know exactly what they want.',price:'₦5,800',wa:'https://wa.me/2349024142280?text=Hi%20Angie%2C%20I%20want%20Off%20Manifest.',pop:false},
+            {category:'PEPPERED GIZZARD',name:'Grid Lock',desc:'Peppered gizzard with boiled plantain — executive-grade street food.',price:'₦4,200',wa:'https://wa.me/2349024142280?text=Hi%20Angie%2C%20I%20want%20Grid%20Lock.',pop:true},
+            {category:'PULLED CHICKEN',name:'Unclassified',desc:'Peppered pulled chicken — slow-cooked, hand-shredded, deeply seasoned.',price:'₦4,800',wa:'https://wa.me/2349024142280?text=Hi%20Angie%2C%20I%20want%20Unclassified.',pop:false},
+            {category:'GRILLED TILAPIA',name:'Clear Skies',desc:'Grilled tilapia with fried plantain — clean protein, precise seasoning.',price:'₦6,500',wa:'https://wa.me/2349024142280?text=Hi%20Angie%2C%20I%20want%20Clear%20Skies.',pop:false},
+            {category:'WEEKLY RESERVE',name:'Weekly Reserve',desc:'1-litre soup bowls — strategic nutrition for the professional week ahead.',price:'₦8,500',wa:'https://wa.me/2349024142280?text=Hi%20Angie%2C%20I%20want%20The%20Weekly%20Reserve.',pop:true}
+        ];
+
+        // Turntable config
+        const TC = [{x:0,ry:0,s:1.2,o:1},{x:76,ry:25,s:.86,o:.7},{x:138,ry:42,s:.68,o:.42},{x:185,ry:56,s:.52,o:.18}];
+
+        let cur = 0, autoInt = null, touchX = 0;
+
+        function getOff(i) {
+            let d = i - cur;
+            if (d > 11/2) d -= 11;
+            if (d < -11/2) d += 11;
+            return d;
         }
+
+        function render() {
+            const dish = DISHES[cur], img = IMAGES[cur];
+            const fci = document.getElementById('fci'), badge = document.getElementById('badge');
+            const dcat = document.getElementById('dcat'), dnm = document.getElementById('dnm');
+            const dds = document.getElementById('dds'), dpr = document.getElementById('dpr');
+            const dwa = document.getElementById('dwa');
+
+            fci.style.backgroundImage = `url('${img}')`;
+            badge.style.display = dish.pop ? 'block' : 'none';
+            dcat.textContent = dish.category;
+            dnm.textContent = dish.name;
+            dds.textContent = dish.desc;
+            dpr.textContent = dish.price;
+            dwa.href = dish.wa;
+            dwa.textContent = 'Order via WhatsApp';
+
+            const tti = document.getElementById('tti');
+            tti.innerHTML = '';
+            for (let i = 0; i < 11; i++) {
+                const off = getOff(i), cfg = TC[Math.abs(off)];
+                if (!cfg) continue;
+                const el = document.createElement('div');
+                el.className = 'tc-item';
+                el.style.backgroundImage = `url('${IMAGES[i]}')`;
+                const tx = off > 0 ? cfg.x : -cfg.x;
+                const ry = off > 0 ? cfg.ry : -cfg.ry;
+                el.style.transform = `translateX(${tx}px) rotateY(${ry}deg) scale(${cfg.s})`;
+                el.style.opacity = cfg.o;
+                el.style.zIndex = 4 - Math.abs(off);
+                el.addEventListener('click', () => goTo(i));
+                tti.appendChild(el);
+            }
+
+            const dots = document.getElementById('dots');
+            dots.innerHTML = '';
+            for (let i = 0; i < 11; i++) {
+                const dot = document.createElement('div');
+                dot.className = 'dot' + (i === cur ? ' active' : '');
+                dot.addEventListener('click', () => goTo(i));
+                dots.appendChild(dot);
+            }
+        }
+
+        function goTo(i) {
+            cur = ((i % 11) + 11) % 11;
+            render();
+            clearInterval(autoInt);
+            autoInt = setInterval(() => goTo(cur + 1), 3500);
+        }
+
+        document.getElementById('tti').addEventListener('touchstart', (e) => {
+            touchX = e.touches[0].clientX;
+            clearInterval(autoInt);
+        });
+
+        document.getElementById('tti').addEventListener('touchend', (e) => {
+            const diff = touchX - e.changedTouches[0].clientX;
+            if (Math.abs(diff) > 40) goTo(cur + (diff > 0 ? 1 : -1));
+            else autoInt = setInterval(() => goTo(cur + 1), 3500);
+        });
+
+        render();
+        autoInt = setInterval(() => goTo(cur + 1), 3500);
     </script>
+    <!-- Force rebuild -->
 </body>
 </html>
-<!-- Force rebuild -->
